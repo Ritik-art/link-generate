@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body>
         <div class="guest-page">
             <div class="guest-box">
                 <div class="guest-title">Sembark URL Shortner</div>

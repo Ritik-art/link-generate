@@ -37,7 +37,7 @@ The project is built with the following stack:
 
 - **Backend:** Laravel 13
 - **Language:** PHP 8.3
-- **Frontend:** Blade templates, Alpine.js, Tailwind CSS, Vite
+- **Frontend:** Blade templates, Alpine.js, custom CSS, Vite
 - **Database layer:** Laravel migrations, Eloquent models, and query builder
 - **Testing:** Pest / Laravel Feature tests
 

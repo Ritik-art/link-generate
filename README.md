@@ -49,6 +49,7 @@ composer run setup
 This command will:
 
 - install PHP packages
+- retry automatically if Windows temporarily locks `vendor/composer/installed.php`
 - create the `.env` file if it does not exist
 - generate the app key
 - run the database migration
@@ -60,6 +61,8 @@ If you prefer manual setup, use these steps:
 ```bash
 composer install
 ```
+
+If you are on Windows and Composer reports a temporary lock on `vendor/composer/installed.php`, run the setup command again after closing any other Composer/PHP process. The project now retries that specific lock automatically during `composer run setup`.
 
 If `.env` is not created yet, copy it from `.env.example`.
 

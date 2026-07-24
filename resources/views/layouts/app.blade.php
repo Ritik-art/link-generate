@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="font-sans antialiased">
+    <body>
         <div class="app-shell">
             @include('layouts.navigation')
 

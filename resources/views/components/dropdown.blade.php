@@ -1,28 +1,28 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700'])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'dropdown-panel'])
 
 @php
-    $alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
+    $alignmentClasses = 'dropdown-panel-right';
 
     if ($align == 'left') {
-        $alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0';
+        $alignmentClasses = 'dropdown-panel-left';
     }
 
     if ($align == 'top') {
-        $alignmentClasses = 'origin-top';
+        $alignmentClasses = 'dropdown-panel-top';
     }
 
     if ($width == '48') {
-        $width = 'w-48';
+        $width = 'dropdown-panel-width';
     }
 @endphp
 
-<details class="relative">
+<details class="dropdown">
     <summary style="list-style: none; cursor: pointer;">
         {{ $trigger }}
     </summary>
 
-    <div class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
+    <div class="{{ $width }} {{ $alignmentClasses }}">
+        <div class="{{ $contentClasses }}">
             {{ $content }}
         </div>
     </div>

@@ -21,6 +21,10 @@ button {
     cursor: pointer;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -39,8 +43,77 @@ label {
     margin-bottom: 6px;
 }
 
+.field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-stack {
+    display: grid;
+    gap: 16px;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-actions.end {
+    justify-content: flex-end;
+}
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444444;
+    margin-bottom: 0;
+}
+
+.input-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #bdbdbd;
+    background: #ffffff;
+}
+
+.input-error {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+.status-message,
+.muted {
+    font-size: 14px;
+    color: #666666;
+}
+
+.status-message {
+    color: #2f7a3d;
+}
+
 .app-shell {
     min-height: 100vh;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 24px;
+}
+
+.card-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
 }
 
 .topbar {
@@ -119,9 +192,12 @@ details {
     color: #ff8c00;
 }
 
+.panel-title.blue {
+    color: #2a6adf;
+}
+
 .btn,
-button[type="submit"],
-button[type="button"] {
+button:not(.button):not(.btn) {
     display: inline-block;
     background: #9fd0ff;
     border: 2px solid #2a6adf;
@@ -129,6 +205,46 @@ button[type="button"] {
     padding: 6px 14px;
     font-size: 14px;
     text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover,
+button:not(.button):not(.btn):hover {
+    background: #7bb8f4;
+    color: #0f3e7f;
+}
+
+.button {
+    display: inline-block;
+    border: 2px solid transparent;
+    padding: 8px 14px;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.button-primary {
+    background: #9fd0ff;
+    border-color: #2a6adf;
+    color: #1f4f99;
+}
+
+.button-secondary {
+    background: #ffffff;
+    border-color: #bdbdbd;
+    color: #555555;
+}
+
+.button-danger {
+    background: #ffcdcd;
+    border-color: #d53f3f;
+    color: #9a1f1f;
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.button-danger:hover {
+    transform: translateY(-1px);
 }
 
 .table {
@@ -205,12 +321,129 @@ button[type="button"] {
     color: #2563eb;
 }
 
+.profile-card {
+    background: #f7f7f7;
+    border: 2px solid #555555;
+    padding: 18px;
+}
+
+.profile-section {
+    display: grid;
+    gap: 18px;
+}
+
+.section-heading {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222222;
+}
+
+.nav-link,
+.responsive-nav-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #444444;
+}
+
+.nav-link {
+    padding: 0;
+}
+
+.nav-link-active {
+    color: #1f4f99;
+    font-weight: 700;
+}
+
+.responsive-nav-link {
+    display: block;
+    padding: 10px 12px;
+    border-left: 4px solid transparent;
+}
+
+.responsive-nav-link-active {
+    border-left-color: #2a6adf;
+    background: #eef5ff;
+    color: #1f4f99;
+    font-weight: 700;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-panel,
+.dropdown-panel-right,
+.dropdown-panel-left,
+.dropdown-panel-top,
+.dropdown-panel-width {
+    position: absolute;
+    z-index: 50;
+}
+
+.dropdown-panel-width {
+    min-width: 12rem;
+}
+
+.dropdown-panel-right {
+    right: 0;
+    top: 100%;
+}
+
+.dropdown-panel-left {
+    left: 0;
+    top: 100%;
+}
+
+.dropdown-panel-top {
+    left: 0;
+    bottom: 100%;
+}
+
+.dropdown-panel {
+    margin-top: 8px;
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    color: #444444;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background: #f3f4f6;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 summary {
     cursor: pointer;
     font-weight: 700;
 }
 
 @media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
     .stats {
         grid-template-columns: 1fr;
     }
