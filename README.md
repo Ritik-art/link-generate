@@ -16,9 +16,9 @@ A simple Laravel project for role based login, invitation, and short URL generat
 - PHP 8.3
 - Laravel 13
 - Blade
-- Tailwind CSS
-- Alpine.js
-- Vite
+- Simple CSS
+- Simple JavaScript
+- Frontend build tool
 - SQLite database
 
 ## Requirements
@@ -27,7 +27,7 @@ Before running the project, make sure you have:
 
 - PHP 8.3 or higher
 - Composer
-- Node.js and npm
+- Frontend tools
 - SQLite
 
 ## Project Setup
@@ -39,19 +39,34 @@ git clone <your-repo-link>
 cd link_generate
 ```
 
-### 2. Install PHP packages
+### 2. Fast setup
+
+If you want to install everything quickly, run:
+
+```bash
+composer run setup
+```
+
+This command will:
+
+- install PHP packages
+- create the `.env` file if it does not exist
+- generate the app key
+- run the database migration
+- install frontend tools
+- build the frontend files
+
+### 3. If you want to do it step by step
+
+If you prefer manual setup, use these steps:
 
 ```bash
 composer install
 ```
 
-### 3. Install Node packages
-
 ```bash
 npm install
 ```
-
-### 4. Create the `.env` file
 
 If `.env` is not created yet, copy it from `.env.example`.
 
@@ -59,13 +74,13 @@ If `.env` is not created yet, copy it from `.env.example`.
 copy .env.example .env
 ```
 
-### 5. Generate app key
+Then generate the app key:
 
 ```bash
 php artisan key:generate
 ```
 
-### 6. Set the database
+### 4. Set the database
 
 This project uses SQLite by default.
 
@@ -77,19 +92,19 @@ database/database.sqlite
 
 If it does not exist, create it manually.
 
-### 7. Run migrations
+Then run migrations:
 
 ```bash
 php artisan migrate
 ```
 
-### 8. Build frontend assets
+### 5. Build frontend files
 
 ```bash
 npm run build
 ```
 
-### 9. Run the project
+### 6. Run the project
 
 Use these two commands in separate terminals:
 
@@ -100,6 +115,8 @@ php artisan serve
 ```bash
 npm run dev
 ```
+
+If you use the fast setup command, you usually only need this step after that.
 
 ## Default Login Flow
 
@@ -126,6 +143,7 @@ npm run dev
 - Password reset and email verification are not used in this project
 - The code is kept simple on purpose
 - The project is written in a beginner style for easy understanding
+- The easiest install is `composer run setup`
 
 ## Useful Commands
 
