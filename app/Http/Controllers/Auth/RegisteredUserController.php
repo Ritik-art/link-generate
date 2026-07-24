@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -67,10 +65,6 @@ class RegisteredUserController extends Controller
             session()->forget(['invite_token', 'invite_email', 'invite_role', 'invite_company_id']);
         }
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect('/dashboard');
+        return redirect('/login')->with('status', 'Registration complete. Please log in.');
     }
 }

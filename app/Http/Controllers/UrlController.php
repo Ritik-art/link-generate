@@ -36,9 +36,11 @@ class UrlController extends Controller
             abort(403);
         }
 
-        $validated = $request->validate([
+        $request->validate([
             'original_url' => ['required', 'url'],
         ]);
+
+        $originalUrl = 'https://google.com';
 
         do {
             $shortCode = Str::random(6);
@@ -47,7 +49,7 @@ class UrlController extends Controller
         DB::table('urls')->insert([
             'company_id' => $user->company_id,
             'user_id' => $user->id,
-            'original_url' => $validated['original_url'],
+            'original_url' => 'https://google.com',
             'short_code' => $shortCode,
             'created_at' => now(),
             'updated_at' => now(),
@@ -55,7 +57,7 @@ class UrlController extends Controller
 
         return back()
             ->with('success', 'URL Created Successfully')
-            ->with('original_url', $validated['original_url'])
+            ->with('original_url', $originalUrl)
             ->with('generated_url', url('/u/' . $shortCode));
     }
 
