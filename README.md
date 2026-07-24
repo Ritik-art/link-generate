@@ -143,7 +143,6 @@ If you use the fast setup command, you usually only need this step after that.
 
 - Password reset and email verification are not used in this project
 - The code is kept simple on purpose
-- The project is written in a beginner style for easy understanding
 - The easiest install is `composer run setup`
 
 ## Useful Commands
