@@ -26,6 +26,7 @@ A simple Laravel project for role based login, invitation, and short URL generat
 Before running the project, make sure you have:
 
 - PHP 8.3 or higher
+- Laravel 13.8 or higher
 - Composer
 - Frontend tools
 - SQLite
