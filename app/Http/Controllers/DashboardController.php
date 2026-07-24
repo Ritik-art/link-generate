@@ -29,6 +29,9 @@ class DashboardController extends Controller
         } elseif ($user->role == 'Admin') {
             $members = DB::table('users')
                 ->where('company_id', $user->company_id)
+                ->where('role', '!=', 'SuperAdmin')
+                ->orderByRaw("CASE role WHEN 'Admin' THEN 0 WHEN 'Member' THEN 1 ELSE 2 END")
+                ->orderBy('name')
                 ->get();
 
             $urls = DB::table('urls')

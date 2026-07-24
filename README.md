@@ -88,11 +88,24 @@ database/database.sqlite
 
 If it does not exist, create it manually.
 
+Create a MySQL database in localhost phpMyAdmin and update the database name in the `.env` file.
+
+Make sure `SESSION_DRIVER=file` in `.env`, otherwise the browser may show an error.
+
 Then run migrations:
 
 ```bash
 php artisan migrate
 ```
+Then run seeder command:
+
+```bash
+ php artisan db:seed
+```
+Super Admin Login Credentials
+
+username - `superadmin@mail.com`
+password - `password`
 
 ### 5. Build frontend files
 This project does not need a frontend build step.

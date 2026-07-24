@@ -62,7 +62,7 @@
                     <tbody>
                         @forelse($urls as $url)
                             <tr>
-                                <td>
+                                <td class="table-link">
                                     <a href="{{ url('/u/' . $url->short_code) }}" target="_blank">
                                         {{ url('/u/' . $url->short_code) }}
                                     </a>

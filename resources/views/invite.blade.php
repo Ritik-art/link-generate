@@ -83,7 +83,7 @@
                                 <td>{{ $invite->email }}</td>
                                 <td>{{ $invite->role }}</td>
                                 <td>{{ $invite->status }}</td>
-                                <td>
+                                <td class="table-link">
                                     @if($invite->invite_link)
                                         <a href="{{ $invite->invite_link }}" target="_blank">{{ $invite->invite_link }}</a>
                                     @else
