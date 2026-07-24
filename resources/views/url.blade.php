@@ -83,8 +83,8 @@
         <div class="stack">
             <div class="panel">
                 <h3 class="panel-title orange">Quick Note</h3>
-                <p class="muted">Click Generate to create a new short URL automatically.</p>
-                <p class="muted">The short link will redirect to https://example.com.</p>
+                <p class="muted">Enter the destination URL in the form to create a new short link.</p>
+                <p class="muted">The short link will redirect to the URL you submit.</p>
             </div>
         </div>
     </div>

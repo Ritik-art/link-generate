@@ -40,7 +40,7 @@ class UrlController extends Controller
             'original_url' => ['required', 'url'],
         ]);
 
-        $originalUrl = 'https://google.com';
+        $originalUrl = $request->input('original_url');
 
         do {
             $shortCode = Str::random(6);
@@ -49,7 +49,7 @@ class UrlController extends Controller
         DB::table('urls')->insert([
             'company_id' => $user->company_id,
             'user_id' => $user->id,
-            'original_url' => 'https://google.com',
+            'original_url' => $originalUrl,
             'short_code' => $shortCode,
             'created_at' => now(),
             'updated_at' => now(),

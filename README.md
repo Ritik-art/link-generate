@@ -45,8 +45,6 @@ cd link_generate
 composer install
 ```
 
-If you are on Windows and Composer reports a temporary lock on `vendor/composer/installed.php`, run the setup command again after closing any other Composer/PHP process. The project now retries that specific lock automatically during `composer run setup`.
-
 If `.env` is not created yet, copy it from `.env.example`.
 
 ```bash
