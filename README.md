@@ -38,25 +38,8 @@ git clone <your-repo-link>
 cd link_generate
 ```
 
-### 2. Fast setup
-
-If you want to install everything quickly, run:
-
-```bash
-composer run setup
-```
-
-This command will:
-
-- install PHP packages
-- retry automatically if Windows temporarily locks `vendor/composer/installed.php`
-- create the `.env` file if it does not exist
-- generate the app key
-- run the database migration
-
-### 3. If you want to do it step by step
-
-If you prefer manual setup, use these steps:
+### 2. setup
+ use these steps:
 
 ```bash
 composer install
@@ -70,7 +53,7 @@ If `.env` is not created yet, copy it from `.env.example`.
 copy .env.example .env
 ```
 
-Then generate the app key:
+### 3. Then generate the app key:
 
 ```bash
 php artisan key:generate
@@ -142,7 +125,6 @@ php artisan serve
 
 - Password reset and email verification are not used in this project
 - The code is kept simple on purpose
-- The easiest install is `composer run setup`
 
 ## Useful Commands
 
