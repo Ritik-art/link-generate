@@ -1,6 +1,6 @@
 <nav class="topbar">
     <div class="brand">
-        <span class="btn small">&gt;URL&lt;</span>
+        {{-- <span class="btn small">&gt;URL&lt;</span> --}}
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </div>
 

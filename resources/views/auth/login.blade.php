@@ -1,33 +1,43 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.guest')
+
+@section('content')
+    @if(session('status'))
+        <p style="margin-bottom: 16px;">{{ session('status') }}</p>
+    @endif
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <label for="email">Email</label>
+            <input
+                id="email"
+                type="email"
+                name="email"
+                value="{{ old('email') }}"
+                required
+                autofocus
+                autocomplete="username"
+            >
+            @error('email')
+                <p style="color: red; margin-top: 6px;">{{ $message }}</p>
+            @enderror
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div style="margin-top: 16px;">
+            <label for="password">Password</label>
+            <input
+                id="password"
+                type="password"
+                name="password"
+                required
+                autocomplete="current-password"
+            >
+            @error('password')
+                <p style="color: red; margin-top: 6px;">{{ $message }}</p>
+            @enderror
         </div>
 
-        <div class="flex items-center justify-start mt-4">
-            <x-primary-button>
-                {{ __('Login') }}
-            </x-primary-button>
-        </div>
+        <button type="submit" style="margin-top: 16px;">Login</button>
     </form>
-</x-guest-layout>
+@endsection

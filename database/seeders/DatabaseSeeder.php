@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        DB::statement("
-            INSERT INTO companies (id, name, created_at, updated_at)
-            VALUES (1, 'Main Company', NOW(), NOW())
-        ");
+        // DB::statement("
+        //     INSERT INTO companies (id, name, created_at, updated_at)
+        //     VALUES (1, 'Main Company', NOW(), NOW())
+        // ");
 
         DB::statement("
             INSERT INTO users (company_id, name, email, password, role, created_at, updated_at)

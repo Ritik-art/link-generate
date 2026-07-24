@@ -224,19 +224,29 @@
         <div class="app-shell">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
+            @hasSection('header')
+                <header class="app-header">
+                    <div>
+                        @yield('header')
+                    </div>
+                </header>
+            @elseif(isset($header))
                 <header class="app-header">
                     <div>
                         {{ $header }}
                     </div>
                 </header>
-            @endisset
+            @endif
 
-            <!-- Page Content -->
-            <main class="app-main">
-                {{ $slot }}
-            </main>
+            @hasSection('content')
+                <main class="app-main">
+                    @yield('content')
+                </main>
+            @else
+                <main class="app-main">
+                    {{ $slot }}
+                </main>
+            @endif
         </div>
     </body>
 </html>

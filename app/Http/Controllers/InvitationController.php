@@ -22,6 +22,12 @@ class InvitationController extends Controller
                 ->get();
         }
 
+        foreach ($invitations as $invite) {
+            $invite->invite_link = $invite->status == 'Pending'
+                ? url('/invite/accept/' . $invite->token)
+                : null;
+        }
+
         return view('invite', compact('invitations'));
     }
 

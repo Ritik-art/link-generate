@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     {
         if (! Auth::attempt($this->only('email', 'password'))) {
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'Invalid email or password.',
             ]);
         }
     }

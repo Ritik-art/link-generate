@@ -1,35 +1,40 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="panel-title blue">Generated Short URL</h2>
-    </x-slot>
+@extends('layouts.app')
 
+@section('header')
+    <h2 class="panel-title blue">Generated Short URL</h2>
+@endsection
+
+@section('content')
     <div class="dashboard-grid">
         <div class="stack">
             <div class="panel">
-                <div class="card-row">
-                    <h3 class="panel-title blue">Generate Short URL</h3>
-                    @if($canCreate)
-                        <form method="POST" action="{{ route('url.store') }}">
-                            @csrf
-                            <div class="mt-4">
-                                <label>Original URL</label>
-                                <input
-                                    type="url"
-                                    name="original_url"
-                                    value="{{ old('original_url') }}"
-                                    placeholder="https://example.com"
-                                    required
-                                >
-                                @error('original_url')
-                                    <p class="text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn">Generate</button>
-                        </form>
-                    @else
-                        <span class="muted">SuperAdmin can only view short URLs.</span>
-                    @endif
-                </div>
+                <h3 class="panel-title blue">Generate Short URL</h3>
+
+                @if($canCreate)
+                    <form method="POST" action="{{ route('url.store') }}">
+                        @csrf
+
+                        <div>
+                            <label for="original_url">Original URL</label>
+                            <input
+                                id="original_url"
+                                type="url"
+                                name="original_url"
+                                value="{{ old('original_url') }}"
+                                placeholder="https://example.com"
+                                required
+                            >
+
+                            @error('original_url')
+                                <p style="color: red; margin-top: 6px;">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn" style="margin-top: 16px;">Generate</button>
+                    </form>
+                @else
+                    <p class="muted">SuperAdmin can only view short URLs.</p>
+                @endif
 
                 @if(session('success'))
                     <p>{{ session('success') }}</p>
@@ -83,4 +88,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

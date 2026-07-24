@@ -1,8 +1,14 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="panel-title red">Invite New Team Member</h2>
-    </x-slot>
+@extends('layouts.app')
 
+@php
+    $role = auth()->user()->role;
+@endphp
+
+@section('header')
+    <h2 class="panel-title red">Invite New Team Member</h2>
+@endsection
+
+@section('content')
     <div class="dashboard-grid">
         <div class="stack">
             <div class="panel">
@@ -24,7 +30,7 @@
                 <form method="POST" action="{{ route('invite.store') }}" class="stack">
                     @csrf
 
-                    @if(auth()->user()->role == 'SuperAdmin')
+                    @if($role == 'SuperAdmin')
                         <div>
                             <label>Company Name</label>
                             <input type="text" name="company_name" placeholder="Company Name" required>
@@ -38,7 +44,7 @@
 
                     <div>
                         <label>Role</label>
-                        @if(auth()->user()->role == 'SuperAdmin')
+                        @if($role == 'SuperAdmin')
                             <select name="role" required>
                                 <option value="Admin">Admin</option>
                             </select>
@@ -68,6 +74,7 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
+                            <th>Invite Link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,10 +83,17 @@
                                 <td>{{ $invite->email }}</td>
                                 <td>{{ $invite->role }}</td>
                                 <td>{{ $invite->status }}</td>
+                                <td>
+                                    @if($invite->invite_link)
+                                        <a href="{{ $invite->invite_link }}" target="_blank">{{ $invite->invite_link }}</a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3">No invitations found.</td>
+                                <td colspan="4">No invitations found.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -87,4 +101,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

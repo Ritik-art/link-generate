@@ -1,21 +1,20 @@
-<x-app-layout>
-    @php
-        $role = auth()->user()->role;
-        $title = 'Client Member Dashboard';
+@extends('layouts.app')
 
-        if ($role == 'SuperAdmin') {
-            $title = 'Super Admin Dashboard';
-        } elseif ($role == 'Admin') {
-            $title = 'Client Admin Dashboard';
-        }
-    @endphp
+@php
+    $role = auth()->user()->role;
+@endphp
 
-    <x-slot name="header">
-        <h2 class="panel-title {{ $role == 'SuperAdmin' ? 'red' : 'blue' }}">
-            {{ $title }}
-        </h2>
-    </x-slot>
+@section('header')
+    @if($role == 'SuperAdmin')
+        <h2 class="panel-title red">Super Admin Dashboard</h2>
+    @elseif($role == 'Admin')
+        <h2 class="panel-title blue">Client Admin Dashboard</h2>
+    @else
+        <h2 class="panel-title blue">Client Member Dashboard</h2>
+    @endif
+@endsection
 
+@section('content')
     @if($role == 'SuperAdmin')
         <div class="stats">
             <div class="stat">
@@ -53,7 +52,9 @@
             <div class="panel">
                 <div class="card-row">
                     <h3 class="panel-title blue">Generated Short URLs</h3>
-                    <a href="{{ route('url.create') }}" class="btn">Generate</a>
+                    @if($role != 'SuperAdmin')
+                        <a href="{{ route('url.create') }}" class="btn">Generate</a>
+                    @endif
                 </div>
 
                 <table class="table">
@@ -177,4 +178,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+@endsection
