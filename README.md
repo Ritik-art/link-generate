@@ -18,7 +18,6 @@ A simple Laravel project for role based login, invitation, and short URL generat
 - Blade
 - Simple CSS
 - Simple JavaScript
-- Frontend build tool
 - SQLite database
 
 ## Requirements
@@ -28,7 +27,6 @@ Before running the project, make sure you have:
 - PHP 8.3 or higher
 - Laravel 13.8 or higher
 - Composer
-- Frontend tools
 - SQLite
 
 ## Project Setup
@@ -54,8 +52,6 @@ This command will:
 - create the `.env` file if it does not exist
 - generate the app key
 - run the database migration
-- install frontend tools
-- build the frontend files
 
 ### 3. If you want to do it step by step
 
@@ -63,10 +59,6 @@ If you prefer manual setup, use these steps:
 
 ```bash
 composer install
-```
-
-```bash
-npm install
 ```
 
 If `.env` is not created yet, copy it from `.env.example`.
@@ -100,24 +92,15 @@ php artisan migrate
 ```
 
 ### 5. Build frontend files
-
-```bash
-npm run build
-```
+This project does not need a frontend build step.
 
 ### 6. Run the project
 
-Use these two commands in separate terminals:
+Use this command to run the project:
 
 ```bash
 php artisan serve
 ```
-
-```bash
-npm run dev
-```
-
-If you use the fast setup command, you usually only need this step after that.
 
 ## Default Login Flow
 
@@ -150,7 +133,6 @@ If you use the fast setup command, you usually only need this step after that.
 ```bash
 php artisan migrate
 php artisan serve
-npm run dev
 ```
 
 ## License
