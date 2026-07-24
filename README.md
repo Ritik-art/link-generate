@@ -104,8 +104,8 @@ Then run seeder command:
 ```
 Super Admin Login Credentials
 
-username - `superadmin@mail.com`
-password - `password`
+username - superadmin@mail.com
+password - password
 
 ### 5. Build frontend files
 This project does not need a frontend build step.
